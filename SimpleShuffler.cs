@@ -9,9 +9,12 @@ namespace TestTask.Shuffle
 {
     public class SimpleShuffler : IShuffler
     {
-        public void Shuffle(ref Card[] cards)
+        public int Shuffle(ref Card[] cards)
         {
             var random = new Random();
+            int seed = random.Next(1001);
+
+            random = new Random(seed);
 
             for (int i = 0; i < cards.Length; i++)
             {
@@ -20,6 +23,8 @@ namespace TestTask.Shuffle
                 cards[randomIndex] = cards[i];
                 cards[i] = tmp;
             }
+
+            return seed;
         }
     }
 }

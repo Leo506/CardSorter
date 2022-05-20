@@ -9,14 +9,17 @@ namespace TestTask.Shuffle
 {
     public class HumanShuffler : IShuffler
     {
-        public void Shuffle(ref Card[] cards)
+        public int Shuffle(ref Card[] cards)
         {
             var random = new Random();
+            int seed = random.Next(1001);
+
+            random = new Random(seed);
             int countOfChange = random.Next(51);  // Сколько раз поменять местами
 
             // Если меняем четное кол-во раз - то колода не меняется
             if (countOfChange % 2 == 0)
-                return;
+                return seed;
 
 
 
@@ -30,6 +33,8 @@ namespace TestTask.Shuffle
                     cards[cards.Length - 1 - j] = tmp;
                 }
             }
+
+            return seed;
         }
     }
 }

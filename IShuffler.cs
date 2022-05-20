@@ -12,6 +12,7 @@ namespace TestTask.Shuffle
         /// Перемешивает колоду карт
         /// </summary>
         /// <param name="cards">Массив карт</param>
-        public void Shuffle(ref Deck.Card[] cards);
+        /// <returns></returns>
+        public int Shuffle(ref Deck.Card[] cards);
     }
 }
