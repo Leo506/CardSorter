@@ -24,7 +24,7 @@ namespace TestTask
         /// <exception cref="InvalidOperationException"></exception>
         public void CreateNewDeck(string name)
         {
-            if (GetAllNames().Contains(name))
+            if (HasName(name))
                 throw new InvalidOperationException("There is the same name");
 
             decks.Add(new CardDeck(name));
@@ -38,7 +38,7 @@ namespace TestTask
         /// <exception cref="InvalidOperationException"></exception>
         public void RemoveDeck(string name)
         {
-            if (!GetAllNames().Contains(name))
+            if (!HasName(name))
                 throw new InvalidOperationException("No decs with this name");
 
             decks.Remove(decks.Where(d => d.DeckName == name).ToArray()[0]);
@@ -63,10 +63,30 @@ namespace TestTask
         /// <exception cref="InvalidOperationException"></exception>
         public CardDeck GetDeck(string name)
         {
-            if (!GetAllNames().Contains(name))
+            if (!HasName(name))
                 throw new InvalidOperationException("No decs with this name");
 
             return decks.Where(d => d.DeckName == name).ToArray()[0];
+        }
+
+
+        /// <summary>
+        /// Перемешивает выбранную колоду
+        /// </summary>
+        /// <param name="name">Имя колоды</param>
+        /// <exception cref="InvalidOperationException"></exception>
+        public void ShuffleDeck(string name)
+        {
+            if (!HasName(name))
+                throw new InvalidOperationException("No decs with this name");
+
+            var shuffler = Shuffle.ShuffleFactory.GetShuffler();
+            shuffler.Shuffle(ref GetDeck(name).Cards);
+        }
+
+        private bool HasName(string name)
+        {
+            return GetAllNames().Contains(name);
         }
     }
 }

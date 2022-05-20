@@ -12,7 +12,7 @@ namespace TestTask.Deck
         private static readonly string[] valueVariants = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "B", "D", "K", "T"};
         private static readonly string[] suitsVariants = { "Heart", "Spades", "Clubs", "Diamonds" };
 
-        private Card[] cards;  // Массив карт - это и есть колода
+        public Card[] Cards;  // Массив карт - это и есть колода
 
         public string DeckName { get; private set; }
 
@@ -24,23 +24,23 @@ namespace TestTask.Deck
         public CardDeck(string name)
         {
             DeckName = name;
-            cards = new Card[52];
+            Cards = new Card[52];
 
             int index = 0;
             foreach (string variant in valueVariants)
             {
                 foreach (string suit in suitsVariants)
                 {
-                    cards[index++] = new Card(variant, suit);
+                    Cards[index++] = new Card(variant, suit);
                 }
             }
         }
 
         public IEnumerator<Card> GetEnumerator()
         {
-            for (int i = 0; i < cards.Length; i++)
+            for (int i = 0; i < Cards.Length; i++)
             {
-                yield return cards[i];
+                yield return Cards[i];
             }
         }
 

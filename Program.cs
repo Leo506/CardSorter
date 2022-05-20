@@ -9,8 +9,13 @@ public class Program
         manager.CreateNewDeck("First");
 
         foreach (var item in manager.GetDeck("First"))
-        {
             Console.WriteLine(item);
-        }
+
+        Console.WriteLine("-------------------------------");
+
+        manager.ShuffleDeck("First");
+
+        foreach (var item in manager.GetDeck("First"))
+            Console.WriteLine(item);
     }
 }
