@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestTask.Deck
 {
-    public class Deck
+    public class CardDeck
     {
         private static readonly string[] valueVariants = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "B", "D", "K", "T"};
         private static readonly string[] suitsVariants = { "Heart", "Spades", "Clubs", "Diamonds" };
@@ -20,7 +20,7 @@ namespace TestTask.Deck
         /// Создаёт новую колоду
         /// </summary>
         /// <param name="name">Название колоды</param>
-        public Deck(string name)
+        public CardDeck(string name)
         {
             DeckName = name;
             cards = new Card[52];
