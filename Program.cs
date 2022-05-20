@@ -1,2 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using TestTask;
+
+public class Program
+{
+    public static void Main()
+    {
+        DeckManager manager = new DeckManager();
+
+        manager.CreateNewDeck("First");
+
+        foreach (var item in manager.GetDeck("First"))
+        {
+            Console.WriteLine(item);
+        }
+    }
+}

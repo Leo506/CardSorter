@@ -19,5 +19,10 @@ namespace TestTask.Deck
             Value = value;
             Suit = suit;
         }
+
+        public override string ToString()
+        {
+            return Value + " " + Suit;
+        }
     }
 }

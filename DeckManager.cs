@@ -53,5 +53,20 @@ namespace TestTask
         {
             return decks.Select(d => d.DeckName).ToList();
         }
+
+
+        /// <summary>
+        /// Получить колоду по ее имени
+        /// </summary>
+        /// <param name="name">Имя колоды</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        public CardDeck GetDeck(string name)
+        {
+            if (!GetAllNames().Contains(name))
+                throw new InvalidOperationException("No decs with this name");
+
+            return decks.Where(d => d.DeckName == name).ToArray()[0];
+        }
     }
 }

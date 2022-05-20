@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestTask.Deck
 {
-    public class CardDeck
+    public class CardDeck : IEnumerable<Card>
     {
         private static readonly string[] valueVariants = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "B", "D", "K", "T"};
         private static readonly string[] suitsVariants = { "Heart", "Spades", "Clubs", "Diamonds" };
@@ -33,6 +34,19 @@ namespace TestTask.Deck
                     cards[index++] = new Card(variant, suit);
                 }
             }
+        }
+
+        public IEnumerator<Card> GetEnumerator()
+        {
+            for (int i = 0; i < cards.Length; i++)
+            {
+                yield return cards[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
