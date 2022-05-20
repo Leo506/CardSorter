@@ -9,6 +9,10 @@ namespace TestTask.Shuffle
 {
     public class ShuffleFactory
     {
+        /// <summary>
+        /// Создает перетасовщика
+        /// </summary>
+        /// <returns></returns>
         public static IShuffler GetShuffler()
         {
             var reader = new AppSettingsReader();
